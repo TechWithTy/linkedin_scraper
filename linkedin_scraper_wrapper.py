@@ -375,9 +375,10 @@ async def search_jobs(
 
 def main():
     parser = argparse.ArgumentParser(description="LinkedIn Scraper Wrapper")
-    parser.add_argument("--mode", choices=["person", "company", "jobs", "session"], required=True,
+    parser.add_argument("--mode", choices=["person", "company", "jobs", "session", "multiple"], required=True,
                        help="Scraping mode")
     parser.add_argument("--url", help="Profile or company URL (for person/company mode)")
+    parser.add_argument("--urls", help="Comma-separated list of profile URLs (for multiple mode)")
     parser.add_argument("--keywords", help="Job search keywords (for jobs mode)")
     parser.add_argument("--location", help="Job search location (for jobs mode)")
     parser.add_argument("--limit", type=int, default=10, help="Limit for job search (default: 10)")
@@ -385,8 +386,50 @@ def main():
     parser.add_argument("--output", help="Output file path")
     parser.add_argument("--headless", action="store_true", default=True, help="Run in headless mode")
     parser.add_argument("--no-headless", dest="headless", action="store_false", help="Show browser window")
+    parser.add_argument("--cookies", help="Cookie file path (for automatic session creation)")
+    parser.add_argument("--cookie-file", dest="cookies", help="Alias for --cookies")
+    parser.add_argument("--mock", action="store_true", help=argparse.SUPPRESS)  # Hidden flag
     
     args = parser.parse_args()
+    
+    # If mock mode, use mock scraper
+    if args.mock:
+        try:
+            from linkedin_scraper_mock import (
+                mock_scrape_person,
+                mock_scrape_company,
+                mock_search_jobs,
+                mock_scrape_multiple_profiles,
+            )
+            
+            if args.mode == "person":
+                if not args.url:
+                    print("[X] Error: --url is required for person mode")
+                    sys.exit(1)
+                asyncio.run(mock_scrape_person(args.url, args.output))
+            elif args.mode == "multiple":
+                if not args.urls:
+                    print("[X] Error: --urls is required for multiple mode")
+                    sys.exit(1)
+                urls = [url.strip() for url in args.urls.split(",")]
+                asyncio.run(mock_scrape_multiple_profiles(urls, args.output))
+            elif args.mode == "company":
+                if not args.url:
+                    print("[X] Error: --url is required for company mode")
+                    sys.exit(1)
+                asyncio.run(mock_scrape_company(args.url, args.output))
+            elif args.mode == "jobs":
+                if not args.keywords:
+                    print("[X] Error: --keywords is required for jobs mode")
+                    sys.exit(1)
+                asyncio.run(mock_search_jobs(args.keywords, args.location, args.limit, args.output))
+            elif args.mode == "session":
+                print("[X] Error: Mock mode does not support session creation")
+                sys.exit(1)
+            return
+        except ImportError as e:
+            print(f"[X] Error: Could not import mock scraper: {e}")
+            sys.exit(1)
     
     if args.mode == "session":
         # For session creation, always use non-headless (manual login requires visible browser)

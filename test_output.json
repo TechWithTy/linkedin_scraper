@@ -1,0 +1,56 @@
+{
+  "name": "James Lee",
+  "headline": "Residential Real Estate Agent at Corcoran",
+  "location": "Boston, MA",
+  "about": "Experienced residential real estate agent specializing in Boston real estate market. Committed to helping clients achieve their real estate goals with integrity and professionalism.",
+  "linkedin_url": "https://linkedin.com/in/test-broker/",
+  "experiences": [
+    {
+      "title": "Associate Broker",
+      "company": "Coldwell Banker",
+      "location": "New York, NY",
+      "description": "Specialized in luxury real estate transactions. Managed client relationships and closed 112+ successful deals.",
+      "start_date": "2024-09",
+      "end_date": null,
+      "duration": "16 months"
+    },
+    {
+      "title": "Licensed Real Estate Agent",
+      "company": "Better Homes and Gardens Real Estate",
+      "location": "Fort Worth, TX",
+      "description": "Focused on investment properties. Achieved top sales performance and maintained excellent client satisfaction ratings.",
+      "start_date": "2023-03",
+      "end_date": "2025-07",
+      "duration": "28 months"
+    }
+  ],
+  "educations": [
+    {
+      "school": "Florida State University",
+      "degree": "Bachelor of Arts in Economics",
+      "field_of_study": "Finance",
+      "start_date": "2001",
+      "end_date": "2005"
+    },
+    {
+      "school": "University of Miami",
+      "degree": "Bachelor of Arts in Economics",
+      "field_of_study": "Marketing",
+      "start_date": "2012",
+      "end_date": "2017"
+    }
+  ],
+  "skills": [
+    "Property Valuation",
+    "Mortgage Lending",
+    "Foreclosures",
+    "Property Marketing",
+    "Contract Negotiation",
+    "Market Analysis",
+    "Residential Real Estate",
+    "Client Relations",
+    "Real Estate Law",
+    "Short Sales"
+  ],
+  "scraped_at": "2026-01-13T08:15:04.578126"
+}
