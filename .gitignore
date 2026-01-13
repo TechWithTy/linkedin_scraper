@@ -1,45 +1,40 @@
-*.swp
-linkedin_user_scraper.egg-info
-linkedin_scraper.egg-info
-dist
-build
-__pycache__
-*.pyc
-chromedriver
-.DS_Store
-.vscode/
-.env/
-scrape.py
-creds.json
-venv
-*.zip
-.env
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+ENV/
+env/
+*.egg-info/
+dist/
+build/
+*.egg
 
-# Test outputs
-*.log
-test_*.db
-test_linkedin.db
-test_summary.json
-results_*.json
-person_*.json
-*_improved.json
-
-# Debug scripts (keep debug_connection_selectors.py)
-debug_*.py
-!debug_connection_selectors.py
-
-# Backup files
-*_old.py
-*.backup
-
-# Session files (sensitive cookies)
+# LinkedIn scraper specific
 linkedin_session.json
+linkedin_*.json
+linkedin_cookies.json
+*.session
 
-# Build artifacts
-MANIFEST
-MANIFEST.ini
-.pytest_cache/
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
 
-# Basic package build artifacts
-build-basic/
-dist-basic/
+# OS
+.DS_Store
+Thumbs.db
+
+# Playwright
+.playwright/
+test-results/
+playwright-report/
+
+# Logs
+*.log
+debug.log
