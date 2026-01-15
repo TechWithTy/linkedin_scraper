@@ -34,3 +34,4 @@ Write-Host "[OK] LinkedIn scraper setup complete!" -ForegroundColor Green
 Write-Host "[*] To activate the virtual environment, run:" -ForegroundColor Cyan
 Write-Host "    .\.venv\Scripts\Activate.ps1" -ForegroundColor Yellow
 
+
